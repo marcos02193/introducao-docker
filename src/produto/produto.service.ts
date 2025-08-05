@@ -18,6 +18,12 @@ export class ProdutoService {
         return this.prisma.product.findMany();
     }
 
+    async findProductById(id: number){
+        return this.prisma.product.findUnique({
+            where: { id }
+        });
+    }
+
 
 
 

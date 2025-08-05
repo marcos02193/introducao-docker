@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateProductDto } from './create-produto.dto';
 import { ProdutoService } from './produto.service';
 import { ApiOperation } from '@nestjs/swagger/dist/decorators/api-operation.decorator';
@@ -21,5 +21,17 @@ export class ProdutoController {
    async AllProducts() {
        return this.produtoService.findAllProducts();
    }
+
+    @Get(':id')
+    @ApiOperation({summary: 'encontrar um produto por id'})
+    async findProductById(@Param('id') id: number) {
+        return this.produtoService.findProductById(id);
+    }
+
+
+
+
+
+
 
 }
