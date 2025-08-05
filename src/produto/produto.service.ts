@@ -14,7 +14,7 @@ export class ProdutoService {
         });
     }
 
-    async findAll() {
+    async findAllProducts() {
         return this.prisma.product.findMany();
     }
 
