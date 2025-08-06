@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateProductDto } from './create-produto.dto';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { CreateProductDto } from './dto/create-produto.dto';
 import { ProdutoService } from './produto.service';
 import { ApiOperation } from '@nestjs/swagger/dist/decorators/api-operation.decorator';
-import { ApiBody, ApiResponse } from '@nestjs/swagger';
+import { UpdateProductDto } from './dto/update-produto.dto';
 
 @Controller('produto')
 export class ProdutoController {
@@ -27,6 +27,27 @@ export class ProdutoController {
     async findProductById(@Param('id') id: number) {
         return this.produtoService.findProductById(id);
     }
+
+
+
+    @Put(':id')
+    @ApiOperation({summary: 'atualizar um produto'})
+    async updateProduct(@Param('id') id: number, @Body() data: UpdateProductDto) {
+        return this.produtoService.updateProduct(id, data);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

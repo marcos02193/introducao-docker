@@ -24,6 +24,18 @@ export class ProdutoService {
         });
     }
 
+    async updateProduct(id: number, data: Prisma.ProductUpdateInput): Promise<Product> {
+        return this.prisma.product.update({
+            where: { id },
+            data
+        });
+    }
+
+
+
+
+
+
 
 
 
