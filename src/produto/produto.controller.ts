@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-produto.dto';
 import { ProdutoService } from './produto.service';
 import { ApiOperation } from '@nestjs/swagger/dist/decorators/api-operation.decorator';
@@ -37,8 +37,11 @@ export class ProdutoController {
     }
 
 
-
-
+    @Delete(':id')
+    @ApiOperation({summary: 'deletar um produto'})
+    async deleteProduct(@Param('id') id: number) {
+        return this.produtoService.deleteproduct(id);
+    }
 
 
 
