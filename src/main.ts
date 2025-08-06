@@ -1,7 +1,7 @@
     import { NestFactory } from '@nestjs/core';
     import { AppModule } from './app.module';
     import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
+    import { ValidationPipe } from '@nestjs/common';
 
     async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -18,12 +18,12 @@ import { ValidationPipe } from '@nestjs/common';
 
     app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, 
-      forbidNonWhitelisted: true, 
-      transform: true, 
+      whitelist: true, // só permite os campos definidos no DTO
+      forbidNonWhitelisted: true, // dá erro se o usuário enviar um campo que não devia.
+      transform: true, // transforma os dados recebidos pro tipo certo
     })
   );
 
-    await app.listen(3000);
+    await app.listen(3001);
     }
     bootstrap();
