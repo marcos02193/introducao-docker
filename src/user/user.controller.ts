@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Prisma, User } from '@prisma/client';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { CreateUserDto } from './dto/create-user-dto';
 
 @Controller('user')
 export class UserController {
@@ -9,12 +10,12 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
 
-    @Post()
-    @ApiOperation({summary: 'Criar um novo usuário'})
-    @ApiResponse({status: 201, description: 'Usuário criado com sucesso'})
-    async createUser(@Body() data: Prisma.UserCreateInput): Promise<User> {
-        return this.userService.createUser(data);
-    }
+    // @Post()
+    // @ApiOperation({summary: 'Criar um novo usuário'})
+    // @ApiResponse({status: 201, description: 'Usuário criado com sucesso'})
+    // async createUser(@Body() data: CreateUserDto): Promise<User> {
+    //     return this.userService.createUser(data);
+    // }
 
     @Get()
     @ApiOperation({summary: 'Encontrar todos os usuários'})

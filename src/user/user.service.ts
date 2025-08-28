@@ -8,9 +8,9 @@ export class UserService {
      constructor(private prisma: PrismaService){}
 
      
-     async createUser(data: Prisma.UserCreateInput): Promise<User> {
-          return this.prisma.user.create({data})
-     }
+     // async createUser(data: Prisma.UserCreateInput): Promise<User> {
+     //      return this.prisma.user.create({data})
+     // }
 
      async findAllUsers(): Promise<User[]> {
           return this.prisma.user.findMany();
@@ -34,11 +34,5 @@ export class UserService {
                where: { id }
           });
      }
-
-
-
-
-
-
 
 }
