@@ -1,6 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing"
 import { ProdutoService } from "./produto.service"
 import { PrismaService } from "../prisma/prisma.service"
+import { Product } from "@prisma/client"
 
 const mockPrisma = {
     product: {
@@ -37,12 +38,12 @@ describe("ProdutoService", () => {
 
     // 02.
     it("deve listar todos os produtos", async () => {
-        const produtos = [
-            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99 },
-            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99 },
-            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99 },
-            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99 },
-            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99 }
+        const produtos: Product[] = [
+            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99, createdAt: new Date(), updatedAt: new Date() }
         ]
         mockPrisma.product.findMany.mockResolvedValue(produtos)
 
@@ -53,12 +54,12 @@ describe("ProdutoService", () => {
 
     // 03.
     it("Deve encontrar produto por ID", async () =>{
-         const produtos = [
-            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99 },
-            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99 },
-            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99 },
-            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99 },
-            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99 }
+         const produtos: Product[] = [
+            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99, createdAt: new Date(), updatedAt: new Date() }
         ]
         mockPrisma.product.findUnique.mockResolvedValue(produtos)
 
@@ -70,11 +71,11 @@ describe("ProdutoService", () => {
     // 04.
     it("Deve atualizar um produto", async () => {
           const produtos = [
-            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99 },
-            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99 },
-            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99 },
-            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99 },
-            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99 }
+            { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 2, name: 'Energy', description: 'Sabor limão', price: 8.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 3, name: 'Gamer', description: 'Sabor uva', price: 10.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 4, name: 'manteiga', description: 'Sabor novo', price: 12.99, createdAt: new Date(), updatedAt: new Date() },
+            { id: 5, name: 'biscoito', description: 'Sabor diferente', price: 15.99, createdAt: new Date(), updatedAt: new Date() }
         ]
         mockPrisma.product.findUnique.mockResolvedValue(produtos)
         mockPrisma.product.update.mockResolvedValue(produtos)
@@ -92,8 +93,8 @@ describe("ProdutoService", () => {
 
     // 05.
     it("Deve deletar um produto", async () => {
-        const produtos = { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99 }
-        
+        const produtos: Product = { id: 1, name: 'Monster', description: 'Sabor morango', price: 9.99, createdAt: new Date(), updatedAt: new Date() }
+
         mockPrisma.product.delete.mockResolvedValue(produtos)
 
         const result = await produtoService.deleteproduct(produtos.id)

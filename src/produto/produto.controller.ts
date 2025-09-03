@@ -4,10 +4,10 @@ import { ProdutoService } from './produto.service';
 import { ApiOperation } from '@nestjs/swagger/dist/decorators/api-operation.decorator';
 import { UpdateProductDto } from './dto/update-produto.dto';
 import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/jwt.guard';
-import { AdminGuard } from 'src/auth/admin.guard';
+import { JwtAuthGuard } from '../auth/jwt.guard';
+import { AdminGuard } from '../auth/admin.guard';
 import { UserGuard } from 'src/auth/user.guard';
-import { AdminOrUserGetGuard } from 'src/auth/admin-user-get';
+import { AdminOrUserGetGuard } from '../auth/admin-user-get';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
