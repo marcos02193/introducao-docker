@@ -39,7 +39,7 @@ Bem-vindo ao projeto **introducao-docker**! Este repositório tem como objetivo 
 ```bash
 docker-compose up --build
 
-📦 Scripts disponíveis
+### 📦 Scripts disponíveis
 
 Use os comandos abaixo dentro do container ou localmente (se preferir rodar sem Docker):
 
@@ -50,7 +50,7 @@ npm run start:dev	Modo dev com auto-reload
 npm run test	Executa testes unitários
 npm run test:cov	Gera cobertura de testes
 
-💡 Boas práticas com Docker
+### 💡 Boas práticas com Docker
 
 ✅ Use .dockerignore para evitar arquivos desnecessários na imagem
 ✅ Mantenha o Dockerfile otimizado e limpo
@@ -58,7 +58,7 @@ npm run test:cov	Gera cobertura de testes
 ✅ Separe ambientes: dev, staging, produção
 
 
-6️⃣ A aplicação estará disponível
+### A aplicação estará disponível
 - API: http://localhost:3001/api
 
 📌 Endpoints CRUD
